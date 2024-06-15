@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Interview with Petrov Fyodor Solomonovich</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header, .navigation, .form-container {
+            margin: 20px;
+        }
+
+        .header {
+            background-color: #6A1B9A;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .navigation {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #6A1B9A;
+            margin-right: 10px;
+        }
+
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h3 {
+            margin-top: 0;
+            display: inline-block;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .difficulty-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .difficulty-easy {
+            background-color: green;
+        }
+
+        .difficulty-medium {
+            background-color: orange;
+        }
+
+        .difficulty-hard {
+            background-color: red;
+        }
+
+        .input-field {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .submit-button {
+            background-color: #6A1B9A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .submit-button:hover {
+            background-color: #4A0072;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Интервью с Петров Фёдор Соломонович</h1>
+        </div>
+        <div>
+            <h2>47:58</h2>
+        </div>
+    </div>
+    <div class="navigation">
+        <a th:href="@{/greeting}">Блок 1 - Приветствие</a>
+        <a th:href="@{/block/candidate-info}">Блок 2 - Рассказ кандидата о себе</a>
+        <a th:href="@{/block/requirements-gathering}">Блок 3 - Сбор требований</a>
+    </div>
+
+    <div class="form-container">
+        <h2>Блок 2 - Рассказ кандидата о себе</h2>
+        <p>Просим кандидата рассказать о своем опыте. Стараемся не погружаться слишком глубоко, при этом когда надо
+            задаем уточняющие вопросы и прерываем глубокие и ненужные дебри рассказа.</p>
+        <ol>
+            <li>Насколько коррелирует с тем, что описано в резюме.</li>
+            <li>Начинаем плавно задавать вопросы по пунктам ниже.</li>
+            <li>Оцениваем ответ (можно обсуждать по результату общения).</li>
+        </ol>
+
+        <form>
+            <div>
+                <label for="question1">1. Расскажи о проекте, над которым работал(а), какую роль выполнял(а) в проекте и
+                    какие были обязанности?</label>
+                <div>
+                    <label><input type="radio" name="question1" value="1"> 1</label>
+                    <label><input type="radio" name="question1" value="2"> 2</label>
+                    <label><input type="radio" name="question1" value="3" checked> 3</label>
+                    <label><input type="radio" name="question1" value="4"> 4</label>
+                    <label><input type="radio" name="question1" value="5"> 5</label>
+                </div>
+                <textarea id="question1" name="question1_info">Мало платят</textarea>
+            </div>
+            <div>
+                <label for="question2">2. Чем ты занимался в роли системного аналитика на проекте? Если не работал СА:
+                    Как ты думаешь, какую роль выполняет системный аналитик на проекте?</label>
+                <div>
+                    <label><input type="radio" name="question2" value="1"> 1</label>
+                    <label><input type="radio" name="question2" value="2"> 2</label>
+                    <label><input type="radio" name="question2" value="3" checked> 3</label>
+                    <label><input type="radio" name="question2" value="4"> 4</label>
+                    <label><input type="radio" name="question2" value="5"> 5</label>
+                </div>
+                <textarea id="question2" name="question2_info">Мало платят</textarea>
+            </div>
+            <div>
+                <label for="question3">3. Какие артефакты/документацию ты создавал(а)?</label>
+                <div>
+                    <label><input type="radio" name="question3" value="1"> 1</label>
+                    <label><input type="radio" name="question3" value="2"> 2</label>
+                    <label><input type="radio" name="question3" value="3" checked> 3</label>
+                    <label><input type="radio" name="question3" value="4"> 4</label>
+                    <label><input type="radio" name="question3" value="5"> 5</label>
+                </div>
+                <textarea id="question3" name="question3_info">Мало платят</textarea>
+            </div>
+            <div>
+                <label for="question4">4. По какой причине ты ушел(а) с предыдущего места работы?</label>
+                <div>
+                    <label><input type="radio" name="question4" value="1"> 1</label>
+                    <label><input type="radio" name="question4" value="2"> 2</label>
+                    <label><input type="radio" name="question4" value="3" checked> 3</label>
+                    <label><input type="radio" name="question4" value="4"> 4</label>
+                    <label><input type="radio" name="question4" value="5"> 5</label>
+                </div>
+                <textarea id="question4" name="question4_info">Мало платят</textarea>
+            </div>
+            <button type="button" onclick="addQuestion()">Добавить вопрос</button>
+            <button type="submit">Подтвердить</button>
+        </form>
+    </div>
+
+</div>
+<script>
+    function addQuestion() {
+        // Implement the function to dynamically add new questions
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Interview with Petrov Fyodor Solomonovich</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header, .navigation, .form-container {
+            margin: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #6A1B9A;
+            margin-right: 10px;
+        }
+
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+
+        .form-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            font-weight: bold;
+        }
+
+        .form-container textarea {
+            width: 100%;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        .form-container button {
+            background-color: #6A1B9A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #4A0072;
+        }
+
+        .toggle-button {
+            display: block;
+            width: 200px;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #6A1B9A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .toggle-button:hover {
+            background-color: #4A0072;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Интервью с Петров Фёдор Соломонович</h1>
+        </div>
+        <div>
+            <h2>47:58</h2>
+        </div>
+    </div>
+    <div class="navigation">
+        <a th:href="@{/greeting}">Блок 1 - Приветствие</a>
+        <a th:href="@{/block/candidate-info}">Блок 2 - Рассказ кандидата о себе</a>
+        <a th:href="@{/block/requirements-gathering}">Блок 3 - Сбор требований</a>
+    </div>
+
+    <div class="form-container">
+        <h2>Блок 3 - Сбор требований</h2>
+
+        <div>
+            <input type="checkbox" id="theoretical_part" name="theoretical_part">
+            <label for="theoretical_part">Теоретическая часть</label>
+            <a href="block/theoretical-part" class="toggle-button">Открыть</a>
+        </div>
+
+        <div>
+            <input type="checkbox" id="practical_part" name="practical_part">
+            <label for="theoretical_part">Практическая часть</label>
+            <a href="block/practical-part" class="toggle-button">Открыть</a>
+        </div>
+
+
+        <button type="submit">Подтвердить</button>
+    </div>
+</div>
+
+<script>
+
+
+    function openPracticalPart() {
+        // Implement the function to open the practical part
+        alert("Открытие практической части");
+    }
+</script>
+</body>
+</html>
