@@ -19,7 +19,7 @@ public class InterviewController {
     @GetMapping("/greeting")
     public ModelAndView interviewPage(ModelAndView modelAndView) {
         modelAndView.setViewName("greeting");
-        modelAndView.addObject("navigation", blockService.findAll());
+        modelAndView.addObject("navigation", blockService.findAll(null));
         return modelAndView;
     }
 

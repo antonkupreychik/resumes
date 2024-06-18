@@ -15,8 +15,8 @@ public class BlockController {
     private final BlockService blockService;
 
     @GetMapping
-    public List<Block> getAllBlocks() {
-        return blockService.findAll();
+    public List<Block> getAllBlocks(@RequestParam(required = false) String department) {
+        return blockService.findAll(department);
     }
 
 }

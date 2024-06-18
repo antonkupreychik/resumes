@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ *
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -16,14 +19,16 @@ public class BlockService {
 
     private final BlockRepository blockRepository;
 
-    public List<Block> findAll() {
+    /**
+     * @param department
+     * @return
+     */
+    public List<Block> findAll(String department) {
         log.info("Finding all blocks");
-        return blockRepository.findAll();
+        if (department == null) {
+            return blockRepository.findAll();
+        } else {
+            return blockRepository.findAllByDepartament(department);
+        }
     }
-
-    public Block save(Block block) {
-        log.info("Saving block {}", block);
-        return blockRepository.save(block);
-    }
-
 }

@@ -12,14 +12,22 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ *
+ */
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
 
     private final BlockService blockService;
 
+    /**
+     * @param includePractice
+     * @param includeTheory
+     * @return
+     */
     public List<QuestionsInfo> getAllQuestions(boolean includePractice, boolean includeTheory) {
-        var interviewBlocks = blockService.findAll();
+        var interviewBlocks = blockService.findAll(null);
         var questions = new ArrayList<QuestionsInfo>();
 
         interviewBlocks.forEach(interviewBlock -> {
@@ -30,6 +38,10 @@ public class QuestionService {
         return questions;
     }
 
+    /**
+     * @param interviewBlock
+     * @return
+     */
     private static QuestionsInfo buildQuestion(Block interviewBlock) {
         return QuestionsInfo
                 .builder()
@@ -40,6 +52,12 @@ public class QuestionService {
                 .build();
     }
 
+    /**
+     * @param interviewBlock
+     * @param question
+     * @param includePractice
+     * @param includeTheory
+     */
     private void collectQuestions(Block interviewBlock, QuestionsInfo question, boolean includePractice, boolean includeTheory) {
         List<Question> questions = interviewBlock.getQuestions();
         question.setQuestions(new ArrayList<>());
@@ -49,6 +67,12 @@ public class QuestionService {
         processHardQuestions(question, questions, includePractice, includeTheory);
     }
 
+    /**
+     * @param question
+     * @param questions
+     * @param includePractice
+     * @param includeTheory
+     */
     private void processHardQuestions(QuestionsInfo question, List<Question> questions, boolean includePractice, boolean includeTheory) {
         int numberOfEasy = question.getNumberOfHard();
         List<Question> easyQuestions = questions
@@ -63,6 +87,12 @@ public class QuestionService {
                 .toList());
     }
 
+    /**
+     * @param question
+     * @param questions
+     * @param includePractice
+     * @param includeTheory
+     */
     private void processMediumQuestions(QuestionsInfo question, List<Question> questions, boolean includePractice, boolean includeTheory) {
         int numberOfEasy = question.getNumberOfMedium();
         List<Question> easyQuestions = questions
@@ -77,6 +107,12 @@ public class QuestionService {
                 .toList());
     }
 
+    /**
+     * @param question
+     * @param questions
+     * @param includePractice
+     * @param includeTheory
+     */
     private void processEasyQuestions(QuestionsInfo question, List<Question> questions, boolean includePractice, boolean includeTheory) {
         int numberOfEasy = question.getNumberOfEasy();
         List<Question> easyQuestions = questions
@@ -91,6 +127,11 @@ public class QuestionService {
                 .toList());
     }
 
+    /**
+     * @param includePractice
+     * @param includeTheory
+     * @return
+     */
     private Predicate<Question> theoryFilter(boolean includePractice, boolean includeTheory) {
         return el -> {
             var isTheory = el.isTheory();
@@ -104,6 +145,11 @@ public class QuestionService {
         };
     }
 
+    /**
+     * @param el
+     * @param difficulty
+     * @return
+     */
     private boolean filterDifficulty(Question el, String difficulty) {
         return el.getDifficulty().equals(difficulty);
     }
